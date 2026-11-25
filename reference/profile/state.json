@@ -1,0 +1,43 @@
+{
+  "id": "state-profile",
+  "version": "0.1.0",
+  "agreed": "example",
+  "source": "templates/state-profile.md",
+  "name": "the State",
+  "naming_rule": "It is always \"the State\"; nothing is said of where it lies or who lives next to it.",
+  "traits": {
+    "weight": "A small State that relies on agreed rules being kept.",
+    "economy": "Lives from fishing and shipping; exposed to disruption at sea.",
+    "security": "In no alliance and in no negotiating bloc.",
+    "at_the_un": "Sits in the General Assembly; has no seat on the Security Council."
+  },
+  "interests": [
+    { "id": "I1", "rank": 1, "text": "Example: borders respected and the integrity of every State." },
+    { "id": "I2", "rank": 2, "text": "Example: international bodies that decide and deliver." },
+    { "id": "I3", "rank": 3, "text": "Example: safety of civilians and access for relief." },
+    { "id": "I4", "rank": 4, "text": "Example: safe and open sea lanes." }
+  ],
+  "conflict_rule": "When two interests clash, the higher one wins, and the decision names it.",
+  "red_lines": [
+    { "id": "R1", "text": "Example: does not accept borders changed by force." },
+    { "id": "R2", "text": "Example: does not vote against access for relief." },
+    {
+      "id": "R3",
+      "text": "Example: does not judge the substance of a quarrel between other States; it speaks for the rule."
+    }
+  ],
+  "alignment": {
+    "rule": "The State speaks in its own name; in a meeting it may share the stance of any group that argues the same thing.",
+    "known_groups": [
+      "national capacity",
+      "Least Developed Countries",
+      "African Group",
+      "Alliance of Small Island States",
+      "European Union",
+      "Landlocked Developing Countries",
+      "Arab Group",
+      "Non-Aligned Movement"
+    ]
+  },
+  "behaviour": ["Would rather join a consensus than force a vote.", "Keeps quiet where it has nothing at stake."]
+}

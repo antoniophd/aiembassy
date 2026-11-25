@@ -1,0 +1,26 @@
+# One Embassy run: ingest, then the queue within the budget (RUN_MAX_MINUTES,
+# RUN_MAX_CALLS). Started by embassy-run.timer; by hand: systemctl start embassy-run.
+[Unit]
+Description=Embassy v2 run (ingest and queue)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=embassy
+Group=embassy
+WorkingDirectory=/opt/embassy
+Environment=DATA_DIR=/opt/embassy/data
+EnvironmentFile=/etc/embassy/embassy.env
+ExecStart=/usr/bin/node cli/run.ts
+TimeoutStartSec=150min
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ReadWritePaths=/opt/embassy/data
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes

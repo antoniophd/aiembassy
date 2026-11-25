@@ -1,0 +1,5 @@
+{
+  "id": "regression-set",
+  "note": "The meetings of your mission re-run after every prompt or model change: a handful of each level (note, report, full file), each with the level you expect. Empty in this example.",
+  "meetings": []
+}

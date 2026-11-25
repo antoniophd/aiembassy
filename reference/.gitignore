@@ -1,0 +1,23 @@
+# Dependencies and build output
+node_modules/
+dist/
+coverage/
+
+# Runtime data (SQLite database, WAL files, backups) lives outside git
+data/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Private data exports and local archives: never commit
+*.ndjson
+*.tar.gz
+/backups/
+/work/
+/tmp/
+
+# OS / editor
+.DS_Store
+*.log

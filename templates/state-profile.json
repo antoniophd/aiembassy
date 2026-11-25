@@ -1,0 +1,27 @@
+{
+  "id": "state-profile",
+  "version": "1.0.0",
+  "name": "the State",
+  "naming_rule": "",
+  "traits": {
+    "weight": "",
+    "economy": "",
+    "security": "",
+    "at_the_un": ""
+  },
+  "interests": [
+    { "id": "I1", "rank": 1, "text": "" },
+    { "id": "I2", "rank": 2, "text": "" },
+    { "id": "I3", "rank": 3, "text": "" }
+  ],
+  "conflict_rule": "",
+  "red_lines": [
+    { "id": "R1", "text": "" },
+    { "id": "R2", "text": "" }
+  ],
+  "alignment": {
+    "rule": "",
+    "known_groups": ["national capacity"]
+  },
+  "behaviour": [""]
+}

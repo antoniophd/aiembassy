@@ -1,0 +1,99 @@
+{
+  "id": "team",
+  "version": "1.0.1",
+  "agreed": "2026-11-12",
+  "source": "guide/03-design-the-team-of-agents.md",
+  "rule": "Each agent writes one kind of document. No agent rewrites another's.",
+  "roles": [
+    {
+      "id": "pr",
+      "title": "Permanent Representative",
+      "function": "Head of Mission. Takes the decision on every full file.",
+      "writes": [
+        "decision"
+      ],
+      "follows": []
+    },
+    {
+      "id": "dpr",
+      "title": "Deputy Permanent Representative",
+      "function": "Chief operating officer: triages every meeting, assigns counsellors, reviews their work, writes notes and the options memo.",
+      "writes": [
+        "triage",
+        "note",
+        "options_memo"
+      ],
+      "follows": [
+        "Organisational plenary items (elections, appointments, UN reform)"
+      ]
+    },
+    {
+      "id": "political",
+      "title": "Political Counsellor",
+      "function": "Peace and security, humanitarian affairs and human rights.",
+      "writes": [
+        "report",
+        "opinion"
+      ],
+      "follows": [
+        "Security Council",
+        "First, Third and Fourth Committees",
+        "Political, humanitarian and human-rights plenary items"
+      ]
+    },
+    {
+      "id": "legal",
+      "title": "Legal Counsellor",
+      "function": "International law. May object.",
+      "writes": [
+        "report",
+        "opinion"
+      ],
+      "follows": [
+        "Sixth Committee",
+        "Legal plenary items (ICJ and ICC reports, law of the sea)"
+      ]
+    },
+    {
+      "id": "economic",
+      "title": "Economic & Environment Counsellor",
+      "function": "Development, environment, climate change, and the UN budget and administration.",
+      "writes": [
+        "report",
+        "opinion"
+      ],
+      "follows": [
+        "Second and Fifth Committees",
+        "Development, climate and budget plenary items"
+      ]
+    },
+    {
+      "id": "press",
+      "title": "Press Counsellor",
+      "function": "Statement, explanation of vote or press note.",
+      "writes": [
+        "press"
+      ],
+      "follows": [
+        "Works only when the decision asks for it or the DPR flags the file as high-profile"
+      ]
+    }
+  ],
+  "lead_by_body": {
+    "security_council": "political",
+    "ga_c1": "political",
+    "ga_c2": "economic",
+    "ga_c3": "political",
+    "ga_c4": "political",
+    "ga_c5": "economic",
+    "ga_c6": "legal",
+    "ga_plenary": null
+  },
+  "plenary_rule": "Plenary meetings go to a counsellor by subject, chosen by the DPR at triage (dpr for organisational items).",
+  "assignment_rules": [
+    "A legal opinion is mandatory on every Security Council full file that involves the use of force, sanctions or the Charter.",
+    "Every full file carries at least one opinion from a counsellor other than the lead.",
+    "The DPR may add a second counsellor for a cross-cutting file."
+  ],
+  "capital": "Out of scope. No document refers to instructions from Capital."
+}

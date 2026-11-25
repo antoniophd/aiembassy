@@ -1,0 +1,9 @@
+[Unit]
+Description=Embassy v2 maintenance every hour
+
+[Timer]
+OnCalendar=*-*-* *:07:00 UTC
+Persistent=true
+
+[Install]
+WantedBy=timers.target

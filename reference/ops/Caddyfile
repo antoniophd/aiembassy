@@ -1,0 +1,47 @@
+# Caddy serves the Embassy site; installed at
+
+{
+	admin localhost:2019
+}
+
+example.org {
+	encode gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "no-referrer"
+		X-Robots-Tag "noindex, nofollow"
+		-Server
+	}
+
+	# Metrics is private with its own credentials (caddy hash-password), independent of the
+	# site password and kept once the rest of the site is public. After its own check Caddy marks the proxied
+	# request (X-Embassy-Metrics); the app serves /metrics only with that mark, so another spelling of the path
+	# routed to the site's handle (/%6Detrics, /./metrics, //metrics, /METRICS) is not found (owner, 2026-11-23).
+	@metrics path_regexp metrics (?i)^/+(\./)*(m|%6d)(e|%65)(t|%74)(r|%72)(i|%69)(c|%63)(s|%73)(/.*)?$
+	handle @metrics {
+		import /etc/caddy/embassy-metrics-auth.caddy
+		reverse_proxy 127.0.0.1:3910 {
+			header_up X-Embassy-Metrics granted
+		}
+	}
+
+	# Basic authentication in front of the whole site while it is private.
+	# Hash only; set with /opt/embassy/ops/set-site-password.sh
+	# To open the site (owner's word only): remove the import line below; everything else stays.
+	handle {
+		import /etc/caddy/embassy-auth.caddy
+		reverse_proxy 127.0.0.1:3910 {
+			header_up -X-Embassy-Metrics
+		}
+	}
+
+	log {
+		output file /var/log/caddy/embassy.log {
+			roll_size 10MiB
+			roll_keep 5
+		}
+	}
+}

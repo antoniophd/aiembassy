@@ -1,0 +1,28 @@
+# Embassy v2 site: server-rendered pages on 127.0.0.1:3910 (Caddy in front).
+# The web process reads the database only and never sees LLM_API_KEY.
+[Unit]
+Description=Embassy site
+After=network.target
+
+[Service]
+Type=simple
+User=embassy
+Group=embassy
+WorkingDirectory=/opt/embassy
+Environment=HOST=127.0.0.1 PORT=3910 DATA_DIR=/opt/embassy/data
+ExecStart=/usr/bin/node cli/web.ts
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ReadWritePaths=/opt/embassy/data
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+
+[Install]
+WantedBy=multi-user.target
